@@ -1,46 +1,55 @@
 {
-  "name": "Node-exporter helm chart from bitnami",
-  "description": "Node-exporter helm chart from bitnami",
-  "logo": "_images/dataset.png",
-  "has_supporting_content": true,
-  "stack_id": "Node-exporter_helm_chart_from_bitnami-course_1611713249136",
-  "type": "Course",
-  "Categories": [
-    "Containerization"
-  ],
-  "source_repo": "",
-  "cover": "cover.md",
-  "use_explorer_dataset": false,
-  "use_catalog_dataset": "",
-  "is_s3_type": false,
-  "meta": {
-    "Install Time": [
-      "30 minutes"
-    ],
-    "Type": [
-      "Course"
-    ],
-    "Categories": [
-      "Containerization"
-    ],
-    "Catalog Id": [
-      "Node-exporter_helm_chart_from_bitnami-course_1611713249136"
-    ],
-    "Contact": [
-      "edge@ibm.com"
-    ],
-    "Last updated": [
-      "Jan 26 2021"
-    ],
-    "Managed By": [
-      "Edge"
-    ]
+    "name": "Node-exporter helm chart from bitnami",
+    "description": "Node-exporter helm chart from bitnami",
+    "logo": "_images/Custom.png",
+    "has_supporting_content": true,
+    "stack_id": "Node-exporter helm chart from bitnami",
+    "type": "Helm",
+    "categories": ["Streaming & Messaging"],
+    "platform": "Kubernetes",
+    "cover": "cover.md",
+    "meta": {
+          "Type": [
+              "Helm"
+          ],
+          "Install time": [
+              "10 minutes"
+          ],
+          "Categories": [
+              "Streaming & Messaging"
+          ]
+    },
+  "deployment_information": {
+    "Project": "NA",
+    "Deployment Namespace": "Node-exporter"
   },
-  "display": [
-    {
-      "name": "Developer Dashboard",
-      "url": "##DNS.host##/codeserver",
-      "enabled": true
-    }
-  ]
-}
+   "commands": [
+      {
+        "description": "Create Namespace",
+        "exec": "kubectl create namespace Node exporter "
+      },
+     {
+        "description": "Create hostpath for Zookeeper and Kafka PVs",
+        "exec": "sudo mkdir -p /bitnami/zookeeper/data && sudo mkdir -p /bitnami/kafka/data && sudo chmod -R 777 /bitnami" 
+      },
+      {
+        "description": "Clone and Prepare ",
+        "exec": "cd /home/student/projects && git clone https://github.com/operator-playground-io/Node-exporter helm chart from bitnami-tile.git && cd Node-exporter helm chart from bitnami-tile && kubectl create -f pv-Node-exporter.yaml && kubectl create -f pv-zookeeper.yaml"
+      },
+      {
+        "description": "Add Bitnami Repo",
+        "exec": "helm repo add bitnami https://charts.bitnami.com/bitnami"
+      },
+      {
+        "description": "Install the chart",
+        "exec": "helm install my-release bitnami/Node-exporter -n Node-exporter"
+      }
+    ],
+    "display": [
+      {
+        "name": "Developer Dashboard",
+        "url": "##DNS.host##/codeserver",
+        "enabled": true
+      }
+    ]
+  }
