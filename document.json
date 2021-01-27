@@ -28,14 +28,6 @@
         "description": "Create Namespace",
         "exec": "kubectl create namespace Node exporter "
       },
-     {
-        "description": "Create hostpath for Zookeeper and Kafka PVs",
-        "exec": "sudo mkdir -p /bitnami/zookeeper/data && sudo mkdir -p /bitnami/kafka/data && sudo chmod -R 777 /bitnami" 
-      },
-      {
-        "description": "Clone and Prepare ",
-        "exec": "cd /home/student/projects && git clone https://github.com/operator-playground-io/Node-exporter helm chart from bitnami-tile.git && cd Node-exporter helm chart from bitnami-tile && kubectl create -f pv-Node-exporter.yaml && kubectl create -f pv-zookeeper.yaml"
-      },
       {
         "description": "Add Bitnami Repo",
         "exec": "helm repo add bitnami https://charts.bitnami.com/bitnami"
