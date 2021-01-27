@@ -25,6 +25,10 @@
   },
    "commands": 
   [
+    {
+      "description": "To create a Namespace ",
+      "exec": "kubectl create namespace node-exporter"
+    },
       {
         "description": "Add the bitnami charts repo to Helm ",
         "exec": "helm repo add bitnami https://charts.bitnami.com/bitnami"
