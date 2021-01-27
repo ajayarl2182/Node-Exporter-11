@@ -23,18 +23,31 @@
     "Project": "NA",
     "Deployment Namespace": "Node-exporter"
   },
-   "commands": [
+   "commands": 
+  [
       {
-        "description": "Create Namespace",
-        "exec": "kubectl create namespace Node exporter "
-      },
-      {
-        "description": "Add Bitnami Repo",
+        "description": "Add the bitnami charts repo to Helm ",
         "exec": "helm repo add bitnami https://charts.bitnami.com/bitnami"
       },
       {
-        "description": "Install the chart",
-        "exec": "helm install my-release bitnami/Node-exporter -n Node-exporter"
+        "description": "To install the chart with the release name my-release:",
+        "exec": "helm install my-release bitnami/node-exporter"
+      },
+      {
+        "description": "To uninstall/delete the my-release release:",
+        "exec": "helm delete my-release"
+      },
+      {
+        "description": "Upgrading",
+        "exec": "helm upgrade my-release bitnami/node-exporter"
+      },
+      {
+        "description": "Node Exporter DaemonSet status",
+        "exec": "kubectl get ds -w --namespace default my-release-node-exporter"
+      }
+      {
+        "description": "Node Exporter DaemonSet status",
+        "exec": "kubectl get ds -w --namespace default my-release-node-exporter"
       }
     ],
     "display": [
